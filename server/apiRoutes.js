@@ -29,12 +29,15 @@ async function updateCardRequisites(ctx) {
   const userId = ctx.session.userId;
   const { date, number, cvv } = ctx.request.body;
 
+  if (!date || !number || !cvv) {
+    ctx.throw(400);
+  }
+
   const user = new User(userId);
   try {
     await user.setCardRequisites({ date, number, cvv });
     ctx.status = 200;
   } catch (e) {
-    console.log(e);
     ctx.throw();
   }
 

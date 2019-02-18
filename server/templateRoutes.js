@@ -162,14 +162,11 @@ async function loginPage(ctx) {
 
 async function registrationPage(ctx) {
   const { login, password1, password2 } = ctx.request.body;
-
-  let notEqualPasswordsError = false;
+  let errors = null;
 
   if (ctx.method === 'POST') {
-
-  	if (password1 !== password2) {
-  		notEqualPasswordsError = true;
-  	} else {
+    errors = getRegistrationErrors(login, password1, password2);
+    if (!errors)  {
       const user = new User();
     	ctx.session.userId = await user.create(login, password1);
 
@@ -180,10 +177,23 @@ async function registrationPage(ctx) {
 
 	await ctx.render('registation', {
 		title: 'Регистрация',
-    notEqualPasswordsError,
     login,
-    isLogin: Boolean(ctx.session.userId)
+    isLogin: Boolean(ctx.session.userId),
+    ...errors
 	});
+}
+
+function getRegistrationErrors(login, password1, password2) {
+  if (!login || !password1 || !password2) {
+    return {
+      isEmptyValuesError: true
+    };
+  }
+  if (password1 !== password2) {
+    return {
+      notEqualPasswordsError: true
+    };
+  }
 }
 
 async function lkPage(ctx) {
@@ -202,8 +212,9 @@ async function lkPage(ctx) {
 
 	for (let i in orderList) {
 		orderList[i].bike = bikeList[i];
-		orderList[i].totalTime = moment().diff(orderList[i].time, 'minutes');
-		orderList[i].totalCost = orderList[i].totalTime * orderList[i].bike.cost;
+		const totalTime = moment().diff(orderList[i].time, 'minutes');
+		orderList[i].totalCost = totalTime * orderList[i].bike.cost;
+    orderList[i].formatTotalTime = formatTotalTime(totalTime);
 	}
 
 	const isDevelop = ctx.cookies.get('isDevelop');
@@ -216,6 +227,16 @@ async function lkPage(ctx) {
 		isDevelop,
     isLogin: Boolean(ctx.session.userId)
 	});
+}
+
+function formatTotalTime(totalTime) {
+  const time = '';
+
+  const hours = Math.floor(totalTime / 60);
+  const minutes = totalTime % 60;
+  const formatingMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  return `${hours}:${formatingMinutes}`;
 }
 
 async function logout(ctx) {

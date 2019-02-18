@@ -20,6 +20,11 @@
 						Пароли не совпадают
 					</p>
 				{{/notEqualPasswordsError}}
+				{{#isEmptyValuesError}}
+					<p class="red-text">
+						Заполните все поля
+					</p>
+				{{/isEmptyValuesError}}
 				<button type="submit" class="btn">Зарегистрироваться</button>
 	      <a href="/login">или войти</a>
 			</form>

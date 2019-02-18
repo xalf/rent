@@ -28,7 +28,7 @@ class Pointers {
 
 	async findWithBike(bikeId) {
 		return new Promise((resolve, reject) => {
-			db.findOne({ bikersList: [ bikeId ] }, (err, point) => {
+			db.findOne({ bikersList: bikeId }, (err, point) => {
 				if (err) reject(err);
 
 				if (!point) {
