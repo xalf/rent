@@ -13,6 +13,4 @@
 {"name":"Горный велосипед Merida Big.Nine 20-MD 2019","cost":4,"img":"vel10.jpg","_id":"pEls97akHepBqGzi"}
 {"name":"Горный велосипед Merida Matts 6.10-MD 2019","cost":3,"img":"vel9.jpg","_id":"uXZA08kiw0gIxTLT"}
 {"name":"Детский велосипед Scool XXlite alloy 16 1-S 2018","cost":2,"img":"vel15.jpg","_id":"uv0o6SkuccHdsLV6"}
-{"name":"Детский велосипед Centurion R Bock 20-D 2018","cost":4,"img":"vel14.jpg","_id":"xecrklJH3FvfvOSJ"}
-{"name":"Детский велосипед Centurion R Bock 20-D 2018","cost":4,"img":"vel14.jpg","_id":"xecrklJH3FvfvOSJ","isRented":true}
 {"name":"Детский велосипед Centurion R Bock 20-D 2018","cost":4,"img":"vel14.jpg","_id":"xecrklJH3FvfvOSJ","isRented":false}
