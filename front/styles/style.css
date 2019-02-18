@@ -1,0 +1,19 @@
+.bikelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bikelist__item {
+  width: 48%;
+  margin-bottom: 30px;
+}
+
+.bikelist__more {
+  margin-bottom: 30px;
+}
+
+.map-point {
+  height: 100px;
+  width: 300px;
+}

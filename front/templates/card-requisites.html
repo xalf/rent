@@ -1,0 +1,22 @@
+{{> header}}
+	<div class="layout container row">
+		<div class="col s6 offset-s3">
+			<h3>Реквизиты карты</h3>
+			<form method="post" class=" js-card-requisites">
+				<div class="input-field">
+					<label for="card-number">Номер карты</label>
+					<input type="text" class="" id="card-number" name="card-number" value="{{ cardRequisites.number }}">
+				</div>
+				<div class="input-field">
+					<label for="card-date">Срок действия</label>
+					<input type="text" class="" id="card-date" name="card-date" value="{{ cardRequisites.date }}">
+				</div>
+				<div class="input-field">
+					<label for="card-cvv">CVV</label>
+					<input type="text" class="" id="card-cvv" name="card-cvv" value="{{ cardRequisites.cvv }}">
+				</div>
+				<button type="submit" class="btn">Сохранить</button>
+			</form>
+		</div>
+	</div>
+{{> footer}}

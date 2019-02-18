@@ -1,0 +1,34 @@
+{{> header}}
+	<div class="layout container">
+		{{#pointInfo}}
+			<h3>Каталог велосипедов по адресу {{pointInfo.address}}</h3>
+		{{/pointInfo}}
+		{{^pointInfo}}
+			<h3>Каталог велосипедов</h3>
+		{{/pointInfo}}
+
+		<div class="row">
+			<div class="bikelist section col s8">
+				{{#bikeList}}
+					<div class="bikelist__item">
+						<img src="/images/{{img}}" class="responsive-img">
+						<p>{{ name }}</p>
+						<a href="/order/{{_id}}" class="btn">Арендовать</a>
+					</div>
+				{{/bikeList}}
+			</div>
+			<div class="col s4">
+				<ul>
+					{{#pointersList}}
+						<li><a href="/catalog/{{_id}}">{{address}}</a></li>
+					{{/pointersList}}
+				</ul>
+			</div>
+		</div>
+		{{#hasMore}}
+			<div class="center-align bikelist__more">
+				<button type="button" name="button" class="btn js-more-bikes ">Загрузить ещё</button>
+			</div>
+		{{/hasMore}}
+	</div>
+{{> footer}}
